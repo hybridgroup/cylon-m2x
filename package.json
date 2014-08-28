@@ -2,32 +2,27 @@
   "name": "cylon-m2x",
   "version": "0.1.0",
   "main": "lib/cylon-m2x.js",
-  "description": "Cylon module for M2x",
+  "description": "Cylon module for M2X",
   "homepage": "http://cylonjs.com",
-  "bugs": "Your bug report URL here",
-
-  "author": "Your Name Here <your@email.here> (your.url.here)",
-
+  "bugs": "https://github.com/hybridgroup/cylon-m2x/issues",
+  "author": "The Hybrid Group <cylonjs@hybridgroup.com>",
   "repository": {
     "type": "git",
-    "url": "your git URL here"
+    "url": "https://github.com/hybridgroup/cylon-m2x"
   },
-
-  "license": "your license type here",
-
+  "license": "Apache 2.0",
   "devDependencies": {
     "sinon-chai": "2.5.0",
-    "chai":       "1.9.1",
-    "mocha":      "1.18.2",
-    "sinon":      "1.9.1",
-    "jshint":     "2.5.0"
+    "chai": "1.9.1",
+    "mocha": "1.18.2",
+    "sinon": "1.9.1",
+    "jshint": "2.5.0"
   },
-
   "peerDependencies": {
     "cylon": ">=0.18.0 < 1"
   },
-
   "dependencies": {
-    "cylon": "~0.18.0"
+    "cylon": "~0.18.0",
+    "m2x": "^0.4.3"
   }
 }
