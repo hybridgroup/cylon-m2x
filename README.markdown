@@ -3,7 +3,7 @@
 Cylon.js (http://cylonjs.com) is a JavaScript framework for robotics and
 physical computing using Node.js
 
-This repository contains the Cylon adaptor & driver for the AT&T M2X storage cloud.
+This repository contains the Cylon adaptor & driver for the [AT&T M2X storage service](https://m2x.att.com).
 
 Want to use Ruby on robots? Check out our sister project Artoo (http://artoo.io)
 
@@ -23,16 +23,24 @@ Install the module with: `npm install cylon-m2x`
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: { name: 'm2x', adaptor: 'm2x' },
+  connection: { name: 'm2x', adaptor: 'm2x', apiKey: 'key', feedId: 'feedId' },
   device: {name: 'm2x', driver: 'm2x'},
 
   work: function(my) {
-    // provide an example of your module here
+  	var count = 0;
+  	every(100, function() {
+  		my.m2x.push('topic1', {count: count++});
+  	});
+    
+    my.m2x.subscribe('topic1', function(data){
+    	console.log(data);
+    });
   }
 }).start();
 ```
 
-Explain how to connect from the computer to the device here...
+- Signup for M2X account
+- Do stuff...
 
 ## Documentation
 We're busy adding documentation to our web site at http://cylonjs.com/ please check there as we continue to work on Cylon.js
