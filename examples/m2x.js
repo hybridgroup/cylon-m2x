@@ -15,11 +15,11 @@ Cylon.robot({
 
     every(2000, function() {
       console.log("Setting test-topic to " + count);
-      my.m2x.push('test-topic', { value: count++ });
+      my.m2x.push('money', { value: count++ });
     });
 
-    my.m2x.subscribe('test-topic', function(data) {
-      console.log(data);
+    my.m2x.subscribe('money', function(data) {
+      console.log("Latest values from M2X: " + data);
     });
   }
 }).start();
