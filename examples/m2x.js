@@ -14,12 +14,12 @@ Cylon.robot({
     var count = 1;
 
     every(2000, function() {
-      console.log("Setting test-topic to " + count);
+      console.log("Setting 'money' to " + count);
       my.m2x.push('money', { value: count++ });
     });
 
     my.m2x.subscribe('money', function(data) {
-      console.log("Latest values from M2X: " + data);
+      console.log("Latest value from M2X: " + data);
     });
   }
 }).start();

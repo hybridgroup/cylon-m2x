@@ -15,32 +15,56 @@ Want to use the Go programming language to power your robots? Check out our sist
 
 Install the module with: `npm install cylon-m2x`
 
-## Examples
+## Setting up M2X
+
+On the [M2X site][M2X], sign up for an account, or log into your existing account.
+After doing so, create a new Data Source Blueprint.
+The name and details don't matter that much, but they should be meaningful.
+
+![New Data Source Blueprint](http://i.imgur.com/YWIPHKr.png)
+
+With that done, inside the new Data Source, create a new Stream.
+This will be the data repository you can push and subscribe to from Cylon.
+
+![New Stream](http://i.imgur.com/piKM1ey.png)
+
+Once that's done, you're good to go.
+Make sure to grab the API key and Feed ID from the Data Source page.
+
+Now you're ready to hook up Cylon to M2X!
+
+[M2X]: https://m2x.att.com
 
 ## Connecting
+
+Most of the information you need for Cylon is stored in the connection hash, be sure to provide the API Key and Feed ID you grabbed off the Data Source page.
 
 ```javascript
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: { name: 'm2x', adaptor: 'm2x', apiKey: 'key', feedId: 'feedId' },
-  device: {name: 'm2x', driver: 'm2x'},
+  connection: {
+    name: 'm2x',
+    adaptor: 'm2x',
+    apiKey: '???',
+    feedId: '???'
+  },
+
+  device: { name: 'm2x', driver: 'm2x' },
 
   work: function(my) {
-  	var count = 0;
-  	every(100, function() {
-  		my.m2x.push('topic1', {count: count++});
-  	});
-    
-    my.m2x.subscribe('topic1', function(data){
-    	console.log(data);
+    var count = 1;
+
+    every(2000, function() {
+      my.m2x.push('money', { value: count++ });
+    });
+
+    my.m2x.subscribe('money', function(data) {
+      console.log("Latest value from M2X: " + data);
     });
   }
 }).start();
 ```
-
-- Signup for M2X account
-- Do stuff...
 
 ## Documentation
 We're busy adding documentation to our web site at http://cylonjs.com/ please check there as we continue to work on Cylon.js
