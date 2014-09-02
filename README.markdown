@@ -67,11 +67,13 @@ Cylon.robot({
 ```
 
 ## Documentation
+
 We're busy adding documentation to our web site at http://cylonjs.com/ please check there as we continue to work on Cylon.js
 
 Thank you!
 
 ## Contributing
+
 * All patches must be provided under the Apache 2.0 License
 * Please use the -s option in git to "sign off" that the commit is your work and you are providing it under the Apache 2.0 License
 * Submit a Github Pull Request to the appropriate branch and ideally discuss the changes with us in IRC.
@@ -86,7 +88,7 @@ Thank you!
 
 ## Release History
 
-None yet...
+- 0.1.0 - Initial release.
 
 ## License
 Copyright (c) 2014 The Hybrid Group. Licensed under the Apache 2.0 license.
