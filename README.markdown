@@ -9,7 +9,7 @@ Want to use Ruby on robots? Check out our sister project Artoo (http://artoo.io)
 
 Want to use the Go programming language to power your robots? Check out our sister project Gobot (http://gobot.io).
 
-[![Build Status](https://secure.travis-ci.org/hybridgroup/cylon-m2x.png?branch=master)](http://travis-ci.org/hybridgroup/cylon-m2x)
+[![Build Status](https://secure.travis-ci.org/hybridgroup/cylon-m2x.png?branch=master)](http://travis-ci.org/hybridgroup/cylon-m2x) [![Code Climate](https://codeclimate.com/github/hybridgroup/cylon-m2x/badges/gpa.svg)](https://codeclimate.com/github/hybridgroup/cylon-m2x) [![Test Coverage](https://codeclimate.com/github/hybridgroup/cylon-m2x/badges/coverage.svg)](https://codeclimate.com/github/hybridgroup/cylon-m2x)
 
 ## Getting Started
 
