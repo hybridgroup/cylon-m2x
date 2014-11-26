@@ -18,7 +18,7 @@ Cylon.robot({
       my.m2x.push('money', { value: count++ });
     });
 
-    my.m2x.subscribe('money', function(data) {
+    my.m2x.subscribe('money', function(err, data) {
       console.log("Latest value from M2X: " + data);
     });
   }
