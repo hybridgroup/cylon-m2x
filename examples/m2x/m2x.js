@@ -1,14 +1,13 @@
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: {
-    name: 'm2x',
-    adaptor: 'm2x',
-    apiKey: '???',
-    feedId: '???'
+  connections: {
+    m2x: { adaptor: 'm2x', apiKey: '???', feedId: '???' }
   },
 
-  device: { name: 'm2x', driver: 'm2x' },
+  devices: {
+    m2x: { driver: 'm2x' }
+  },
 
   work: function(my) {
     var count = 1;
