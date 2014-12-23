@@ -11,33 +11,13 @@ Want to use the Go programming language to power your robots? Check out our sist
 
 [![Build Status](https://secure.travis-ci.org/hybridgroup/cylon-m2x.png?branch=master)](http://travis-ci.org/hybridgroup/cylon-m2x) [![Code Climate](https://codeclimate.com/github/hybridgroup/cylon-m2x/badges/gpa.svg)](https://codeclimate.com/github/hybridgroup/cylon-m2x) [![Test Coverage](https://codeclimate.com/github/hybridgroup/cylon-m2x/badges/coverage.svg)](https://codeclimate.com/github/hybridgroup/cylon-m2x)
 
-## Getting Started
+## How to Install
 
-Install the module with: `npm install cylon-m2x`
+Install the module with:
 
-## Setting up M2X
+    $ npm install cylon-m2x
 
-On the [M2X site][M2X], sign up for an account, or log into your existing account.
-After doing so, create a new Data Source Blueprint.
-The name and details don't matter that much, but they should be meaningful.
-
-![New Data Source Blueprint](http://i.imgur.com/YWIPHKr.png)
-
-With that done, inside the new Data Source, create a new Stream.
-This will be the data repository you can push and subscribe to from Cylon.
-
-![New Stream](http://i.imgur.com/piKM1ey.png)
-
-Once that's done, you're good to go.
-Make sure to grab the API key and Feed ID from the Data Source page.
-
-Now you're ready to hook up Cylon to M2X!
-
-[M2X]: https://m2x.att.com
-
-## Connecting
-
-Most of the information you need for Cylon is stored in the connection hash, be sure to provide the API Key and Feed ID you grabbed off the Data Source page.
+## How to Use
 
 ```javascript
 var Cylon = require('cylon');
@@ -68,6 +48,26 @@ Cylon.robot({
   }
 }).start();
 ```
+
+## How to Connect
+
+On the [M2X site][M2X], sign up for an account, or log into your existing account.
+After doing so, create a new Data Source Blueprint.
+The name and details don't matter that much, but they should be meaningful.
+
+<img src="http://i.imgur.com/YWIPHKr.png" alt="New Data Source Blueprint" width="100%">
+
+With that done, inside the new Data Source, create a new Stream.
+This will be the data repository you can push and subscribe to from Cylon.
+
+<img src="http://i.imgur.com/piKM1ey.png" alt="New Stream" width="100%">
+
+Once that's done, you're good to go.
+Make sure to grab the API key and Feed ID from the Data Source page.
+
+Now you're ready to hook up Cylon to M2X!
+
+[M2X]: https://m2x.att.com
 
 ## Documentation
 
