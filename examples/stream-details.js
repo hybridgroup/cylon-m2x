@@ -13,9 +13,9 @@ Cylon.robot({
   },
 
   work: function(my) {
-    my.m2x.groups(function(err, data) {
+    my.m2x.stream("<deviceId>", "temp", function(err, data) {
       console.log("Err: ", err);
-      console.log("Groups: ", data.groups);
+      console.log("Stream: ", data);
     });
   }
 }).start();

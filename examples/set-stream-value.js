@@ -13,14 +13,12 @@ Cylon.robot({
   },
 
   work: function(my) {
-    my.m2x.list(function(err, data) {
+    my.m2x.stream("<deviceId>", "<streamName>", function(err, data) {
       console.log("Err: ", err);
-      console.log("Private devices: ", data.devices);
-      data.devices.forEach(function(device) {
-        my.m2x.keys(device.id, function(err, data) {
-          console.log("Err: ", err);
-          console.log("Keys: ", data.keys);
-        });
+      console.log("Stream: ", data);
+      my.m2x.setStreamValue("<deviceId>", "<streamName>", { value: 25 }, function(err, locations) {
+        console.log("Err: ", err);
+        console.log("locations: ", locations);
       });
     });
   }

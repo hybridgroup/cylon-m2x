@@ -17,9 +17,9 @@ Cylon.robot({
       console.log("Err: ", err);
       console.log("Private devices: ", data.devices);
       data.devices.forEach(function(device) {
-        my.m2x.keys(device.id, function(err, data) {
+        my.m2x.view(device.id, function(err, data) {
           console.log("Err: ", err);
-          console.log("Keys: ", data.keys);
+          console.log("details: ", data);
         });
       });
     });

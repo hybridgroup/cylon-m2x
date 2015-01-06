@@ -5,7 +5,7 @@ var Cylon = require("cylon");
 
 Cylon.robot({
   connections: {
-    m2x: { adaptor: "m2x", masterKey: "8cb18e481b4f4a9c728cc724fdb01919" }
+    m2x: { adaptor: "m2x", masterKey: "<masterKey>" }
   },
 
   devices: {
