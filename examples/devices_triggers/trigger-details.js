@@ -1,4 +1,3 @@
-/*jslint node: true */
 "use strict";
 
 var Cylon = require("cylon");
@@ -13,9 +12,9 @@ Cylon.robot({
   },
 
   work: function(my) {
-    my.m2x.list(function(err, data) {
+    my.m2x.trigger("<deviceId>", "<triggerId>", function(err, data) {
       console.log("Err: ", err);
-      console.log("Private devices: ", data.devices);
+      console.log("Trigger: ", data);
     });
   }
 }).start();

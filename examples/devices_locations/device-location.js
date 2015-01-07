@@ -1,4 +1,3 @@
-/*jslint node: true */
 "use strict";
 
 var Cylon = require("cylon");
@@ -17,9 +16,9 @@ Cylon.robot({
       console.log("Err: ", err);
       console.log("Private devices: ", data.devices);
       data.devices.forEach(function(device) {
-        my.m2x.keys(device.id, function(err, data) {
+        my.m2x.location(device.id, function(err, locations) {
           console.log("Err: ", err);
-          console.log("Keys: ", data.keys);
+          console.log("locations: ", locations);
         });
       });
     });

@@ -93,11 +93,11 @@ describe("Cylon.Adaptors.M2X", function() {
 
       callback = spy();
       adaptor.m2xClient = m2x;
-      stub(adaptor, "_defCallback").returns(callback);
+      stub(adaptor, "_defCb").returns(callback);
     });
 
     afterEach(function() {
-      adaptor._defCallback.restore();
+      adaptor._defCb.restore();
       adaptor. m2xClient = {};
     });
 
@@ -133,7 +133,7 @@ describe("Cylon.Adaptors.M2X", function() {
     });
   });
 
-  describe("#_defCallback", function() {
+  describe("#_defCb", function() {
     var callback, retCallback, response;
 
     beforeEach(function(){
@@ -145,7 +145,7 @@ describe("Cylon.Adaptors.M2X", function() {
         error: function() { return "Some Error!!!"; }
       };
 
-      retCallback = adaptor._defCallback(callback);
+      retCallback = adaptor._defCb(callback);
     });
 
     afterEach(function() {
@@ -212,11 +212,11 @@ describe("Cylon.Adaptors.M2X", function() {
 
       callback = spy();
       adaptor.m2xClient = m2x;
-      stub(adaptor, "_defCallback").returns(callback);
+      stub(adaptor, "_defCb").returns(callback);
     });
 
     afterEach(function() {
-      adaptor._defCallback.restore();
+      adaptor._defCb.restore();
       adaptor. m2xClient = {};
     });
 

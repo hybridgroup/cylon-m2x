@@ -1,4 +1,3 @@
-/*jslint node: true */
 "use strict";
 
 var Cylon = require("cylon");
@@ -16,10 +15,14 @@ Cylon.robot({
     my.m2x.stream("<deviceId>", "<streamName>", function(err, data) {
       console.log("Err: ", err);
       console.log("Stream: ", data);
-      my.m2x.setStreamValue("<deviceId>", "<streamName>", { value: 25 }, function(err, locations) {
-        console.log("Err: ", err);
-        console.log("locations: ", locations);
-      });
+      my.m2x.setStreamValue(
+        "<deviceId>", "<streamName>",
+        { value: 25 },
+        function(err, locations) {
+          console.log("Err: ", err);
+          console.log("locations: ", locations);
+        }
+      );
     });
   }
 }).start();

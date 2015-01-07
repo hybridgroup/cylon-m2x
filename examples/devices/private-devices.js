@@ -1,4 +1,3 @@
-/*jslint node: true */
 "use strict";
 
 var Cylon = require("cylon");
@@ -16,12 +15,6 @@ Cylon.robot({
     my.m2x.list(function(err, data) {
       console.log("Err: ", err);
       console.log("Private devices: ", data.devices);
-      data.devices.forEach(function(device) {
-        my.m2x.streams(device.id, function(err, data) {
-          console.log("Err: ", err);
-          console.log("Streams: ", data.streams);
-        });
-      });
     });
   }
 }).start();
