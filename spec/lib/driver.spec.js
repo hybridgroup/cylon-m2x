@@ -1,11 +1,13 @@
-'use strict';
+"use strict";
 
-var M2x = source("driver");
+var M2X = source("driver");
 
-describe("Cylon.Drivers.M2x", function() {
-  var driver = new M2x({
+describe("Cylon.Drivers.M2X", function() {
+  var driver = new M2X({
     connection: {}
   });
 
-  it("needs tests");
+  it("needs tests", function() {
+    expect(driver).to.be.an.instanceOf(M2X);
+  });
 });
