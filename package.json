@@ -1,6 +1,6 @@
 {
   "name": "cylon-m2x",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "main": "lib/cylon-m2x.js",
   "description": "Cylon module for M2X",
   "homepage": "http://cylonjs.com",
