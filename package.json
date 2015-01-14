@@ -1,6 +1,6 @@
 {
   "name": "cylon-m2x",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "main": "lib/cylon-m2x.js",
   "description": "Cylon module for M2X",
   "homepage": "http://cylonjs.com",
@@ -23,11 +23,11 @@
   },
 
   "peerDependencies": {
-    "cylon": ">=0.21.0 < 1"
+    "cylon": ">=0.22.0 < 1"
   },
 
   "dependencies": {
-    "cylon": "~0.21.0",
+    "cylon": "~0.22.0",
     "m2x": "~2.0.2"
   }
 }

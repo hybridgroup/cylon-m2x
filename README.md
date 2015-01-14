@@ -83,6 +83,8 @@ Thank you!
 
 ## Release History
 
+- 0.6.0 - Compatability with Cylon 0.22.0
+
 - 0.5.0 - Update to have compatability with M2X v2.0
 
 - 0.4.0 - Compatability with Cylon 0.21.0
