@@ -47,7 +47,7 @@ describe("Cylon.Adaptors.M2X", function() {
     beforeEach(function() {
       callback = spy();
 
-      adaptor.connect(callback);
+      adaptor.disconnect(callback);
     });
 
     it("triggers callback", function() {
@@ -256,8 +256,8 @@ describe("Cylon.Adaptors.M2X", function() {
 
     describe("#view", function() {
       it("calls @m2xClient.devices.view", function() {
-        adaptor.create("123456", callback);
-        expect(devices.create).to.be.calledWith("123456", callback);
+        adaptor.view("123456", callback);
+        expect(devices.view).to.be.calledWith("123456", callback);
       });
     });
 
@@ -382,10 +382,10 @@ describe("Cylon.Adaptors.M2X", function() {
 
     describe("#deleteStream", function() {
       it("calls @m2xClient.devices.updateStream", function() {
-        adaptor.updateStream("123456", { name: "some new name" }, callback);
-        expect(devices.updateStream).to.be.calledWith(
+        adaptor.deleteStream("123456", "myStream", callback);
+        expect(devices.deleteStream).to.be.calledWith(
           "123456",
-          { name: "some new name" },
+          "myStream",
           callback
         );
       });
