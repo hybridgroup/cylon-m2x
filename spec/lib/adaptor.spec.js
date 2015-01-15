@@ -21,11 +21,13 @@ describe("Cylon.Adaptors.M2X", function() {
   });
 
   describe("#connect", function(){
-    var callback;
+    var callback, m2x;
 
     beforeEach(function() {
       callback = spy();
-      stub(adaptor, "_new_m2x");
+      m2x = { devices: {} };
+
+      stub(adaptor, "_new_m2x").returns(m2x);
 
       adaptor.connect(callback);
     });
@@ -85,19 +87,28 @@ describe("Cylon.Adaptors.M2X", function() {
     var callback, m2x, list, catalog;
 
     beforeEach(function() {
-      m2x = { devices: { } };
-
-      list = m2x.devices.list = stub();
-      catalog = m2x.devices.catalog = stub();
+      m2x = {
+        devices: {
+          list: stub(),
+          catalog: stub()
+        }
+      };
 
       callback = spy();
+
       adaptor.m2xClient = m2x;
+      adaptor.devices = m2x.devices;
+
+      list = adaptor.devices.list;
+      catalog = adaptor.devices.catalog;
+
       stub(adaptor, "_defCb").returns(callback);
     });
 
     afterEach(function() {
       adaptor._defCb.restore();
-      adaptor. m2xClient = {};
+      adaptor.m2xClient = {};
+      adaptor.devices = {};
     });
 
     describe("when filter params are null", function() {
@@ -172,12 +183,10 @@ describe("Cylon.Adaptors.M2X", function() {
   });
 
   describe("m2x", function(){
-    var callback, m2x;
+    var callback, devices;
 
     beforeEach(function() {
-      var client = {};
-
-      m2x = client.devices = {
+      adaptor.devices = devices = {
         groups: stub(),
         create: stub(),
         update: stub(),
@@ -208,8 +217,10 @@ describe("Cylon.Adaptors.M2X", function() {
         updateKey: stub()
       };
 
+      adaptor.m2xClient = { devices: devices };
+
       callback = spy();
-      adaptor.m2xClient = client;
+
       stub(adaptor, "_defCb").returns(callback);
     });
 
@@ -221,20 +232,20 @@ describe("Cylon.Adaptors.M2X", function() {
     describe("#groups", function() {
       it("calls @m2xClient.devices.groups", function() {
         adaptor.groups(callback);
-        expect(m2x.groups).to.be.calledWith(callback);
+        expect(devices.groups).to.be.calledWith(callback);
       });
     });
 
     describe("#create", function() {
       it("calls @m2xClient.devices.create", function() {
         adaptor.create({ name: "deviceName" }, callback);
-        expect(m2x.create).to.be.calledWith({ name: "deviceName" }, callback);
+        expect(devices.create).to.be.calledWith({ name: "deviceName" }, callback);
       });
     });
     describe("#update", function() {
       it("calls @m2xClient.devices.update", function() {
         adaptor.update("123456", { name: "deviceName2" }, callback);
-        expect(m2x.update).to.be.calledWith(
+        expect(devices.update).to.be.calledWith(
           "123456",
           { name: "deviceName2" },
           callback
@@ -245,14 +256,14 @@ describe("Cylon.Adaptors.M2X", function() {
     describe("#view", function() {
       it("calls @m2xClient.devices.view", function() {
         adaptor.create("123456", callback);
-        expect(m2x.create).to.be.calledWith("123456", callback);
+        expect(devices.create).to.be.calledWith("123456", callback);
       });
     });
 
     describe("#location", function() {
       it("calls @m2xClient.devices.location", function() {
         adaptor.location("123456", callback);
-        expect(m2x.location).to.be.calledWith("123456", callback);
+        expect(devices.location).to.be.calledWith("123456", callback);
       });
     });
 
@@ -264,7 +275,7 @@ describe("Cylon.Adaptors.M2X", function() {
           callback
         );
 
-        expect(m2x.updateLocation).to.be.calledWith(
+        expect(devices.updateLocation).to.be.calledWith(
           "123456",
           { lon: 123456, lat: 123456 },
           callback
@@ -275,14 +286,14 @@ describe("Cylon.Adaptors.M2X", function() {
     describe("#streams", function() {
       it("calls @m2xClient.devices.streams", function() {
         adaptor.streams("123456", callback);
-        expect(m2x.streams).to.be.calledWith("123456", callback);
+        expect(devices.streams).to.be.calledWith("123456", callback);
       });
     });
 
     describe("#updateStream", function() {
       it("calls @m2xClient.devices.updateStream", function() {
         adaptor.updateStream("123456", { name: "some new name" }, callback);
-        expect(m2x.updateStream).to.be.calledWith(
+        expect(devices.updateStream).to.be.calledWith(
           "123456",
           { name: "some new name" },
           callback
@@ -293,7 +304,7 @@ describe("Cylon.Adaptors.M2X", function() {
     describe("#setStreamValue", function() {
       it("calls @m2xClient.devices.setStreamValue", function() {
         adaptor.setStreamValue("123456", "temp", { value: 15 }, callback);
-        expect(m2x.setStreamValue).to.be.calledWith(
+        expect(devices.setStreamValue).to.be.calledWith(
           "123456",
           "temp",
           { value: 15 },
@@ -305,21 +316,21 @@ describe("Cylon.Adaptors.M2X", function() {
     describe("#stream", function() {
       it("calls @m2xClient.devices.stream", function() {
         adaptor.stream("123456", "temp", callback);
-        expect(m2x.stream).to.be.calledWith("123456", "temp", callback);
+        expect(devices.stream).to.be.calledWith("123456", "temp", callback);
       });
     });
 
     describe("#streamValues", function() {
       it("calls @m2xClient.devices.streamValues", function() {
         adaptor.streamValues("123456", "temp", callback);
-        expect(m2x.streamValues).to.be.calledWith("123456", "temp", callback);
+        expect(devices.streamValues).to.be.calledWith("123456", "temp", callback);
       });
     });
 
     describe("#sampleStreamValues", function() {
       it("calls @m2xClient.devices.sampleStreamValues", function() {
         adaptor.sampleStreamValues("123456", "temp", callback);
-        expect(m2x.sampleStreamValues).to.be.calledWith(
+        expect(devices.sampleStreamValues).to.be.calledWith(
           "123456",
           "temp",
           callback
@@ -330,7 +341,7 @@ describe("Cylon.Adaptors.M2X", function() {
     describe("#streamStats", function() {
       it("calls @m2xClient.devices.streamStats", function() {
         adaptor.streamStats("123456", "temp", callback);
-        expect(m2x.streamStats).to.be.calledWith("123456", "temp", callback);
+        expect(devices.streamStats).to.be.calledWith("123456", "temp", callback);
       });
     });
 
@@ -342,7 +353,7 @@ describe("Cylon.Adaptors.M2X", function() {
           callback
         );
 
-        expect(m2x.postValues).to.be.calledWith(
+        expect(devices.postValues).to.be.calledWith(
           "123456",
           { value: "some new name", timestamp: "DateISOString" },
           callback
@@ -358,7 +369,7 @@ describe("Cylon.Adaptors.M2X", function() {
           callback
         );
 
-        expect(m2x.deleteStreamValues).to.be.calledWith(
+        expect(devices.deleteStreamValues).to.be.calledWith(
           "123456",
           { from: "someDate", to: "otherDate" },
           callback
@@ -369,7 +380,7 @@ describe("Cylon.Adaptors.M2X", function() {
     describe("#deleteStream", function() {
       it("calls @m2xClient.devices.updateStream", function() {
         adaptor.updateStream("123456", { name: "some new name" }, callback);
-        expect(m2x.updateStream).to.be.calledWith(
+        expect(devices.updateStream).to.be.calledWith(
           "123456",
           { name: "some new name" },
           callback
@@ -385,7 +396,7 @@ describe("Cylon.Adaptors.M2X", function() {
           callback
         );
 
-        expect(m2x.postMultiple).to.be.calledWith(
+        expect(devices.postMultiple).to.be.calledWith(
           "123456",
           { name: "temp", value: "some new name", timestamp: "DateISOString" },
           callback
@@ -396,14 +407,14 @@ describe("Cylon.Adaptors.M2X", function() {
     describe("#triggers", function() {
       it("calls @m2xClient.devices.triggers", function() {
         adaptor.triggers("123456", callback);
-        expect(m2x.triggers).to.be.calledWith("123456", callback);
+        expect(devices.triggers).to.be.calledWith("123456", callback);
       });
     });
 
     describe("#createTrigger", function() {
       it("calls @m2xClient.devices.createTrigger", function() {
         adaptor.createTrigger("123456", { name: "some new name" }, callback);
-        expect(m2x.createTrigger).to.be.calledWith(
+        expect(devices.createTrigger).to.be.calledWith(
           "123456",
           { name: "some new name" },
           callback
@@ -414,14 +425,14 @@ describe("Cylon.Adaptors.M2X", function() {
     describe("#trigger", function() {
       it("calls @m2xClient.devices.trigger", function() {
         adaptor.trigger("123456", "triggerID", callback);
-        expect(m2x.trigger).to.be.calledWith("123456", "triggerID", callback);
+        expect(devices.trigger).to.be.calledWith("123456", "triggerID", callback);
       });
     });
 
     describe("#updateTrigger", function() {
       it("calls @m2xClient.devices.updateTrigger", function() {
         adaptor.updateTrigger("123456", { name: "some new name" }, callback);
-        expect(m2x.updateTrigger).to.be.calledWith(
+        expect(devices.updateTrigger).to.be.calledWith(
           "123456",
           { name: "some new name" },
           callback
@@ -432,7 +443,7 @@ describe("Cylon.Adaptors.M2X", function() {
     describe("#testTrigger", function() {
       it("calls @m2xClient.devices.testTrigger", function() {
         adaptor.testTrigger("123456", "triggerID", callback);
-        expect(m2x.testTrigger).to.be.calledWith(
+        expect(devices.testTrigger).to.be.calledWith(
           "123456",
           "triggerID",
           callback
@@ -443,7 +454,7 @@ describe("Cylon.Adaptors.M2X", function() {
     describe("#deleteTrigger", function() {
       it("calls @m2xClient.devices.deleteTrigger", function() {
         adaptor.deleteTrigger("123456", "triggerID", callback);
-        expect(m2x.deleteTrigger).to.be.calledWith(
+        expect(devices.deleteTrigger).to.be.calledWith(
           "123456",
           "triggerID",
           callback
@@ -454,28 +465,28 @@ describe("Cylon.Adaptors.M2X", function() {
     describe("#log", function() {
       it("calls @m2xClient.devices.log", function() {
         adaptor.log("123456", callback);
-        expect(m2x.log).to.be.calledWith("123456", callback);
+        expect(devices.log).to.be.calledWith("123456", callback);
       });
     });
 
     describe("#deleteDevice", function() {
       it("calls @m2xClient.devices.deleteDevice", function() {
         adaptor.deleteDevice("123456", callback);
-        expect(m2x.deleteDevice).to.be.calledWith("123456", callback);
+        expect(devices.deleteDevice).to.be.calledWith("123456", callback);
       });
     });
 
     describe("#keys", function() {
       it("calls @m2xClient.devices.keys", function() {
         adaptor.keys("123456", callback);
-        expect(m2x.keys).to.be.calledWith("123456", callback);
+        expect(devices.keys).to.be.calledWith("123456", callback);
       });
     });
 
     describe("#createKey", function() {
       it("calls @m2xClient.devices.createKey", function() {
         adaptor.createKey("123456", { name: "key" }, callback);
-        expect(m2x.createKey).to.be.calledWith(
+        expect(devices.createKey).to.be.calledWith(
           "123456",
           { name: "key" },
           callback
@@ -487,7 +498,7 @@ describe("Cylon.Adaptors.M2X", function() {
       it("calls @m2xClient.devices.updateKey", function() {
         adaptor.updateKey("123456", { name: "key2" }, callback);
 
-        expect(m2x.updateKey).to.be.calledWith(
+        expect(devices.updateKey).to.be.calledWith(
           "123456",
           { name: "key2" },
           callback
