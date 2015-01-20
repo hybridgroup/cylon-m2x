@@ -235,10 +235,10 @@ describe("Cylon.Drivers.M2X", function() {
       expect(connection.deleteStream).to.be.calledWith("123", "name", {}, cb);
     });
 
-    it("#postValues calls #connection.postValues", function() {
-      driver.postValues("123", {}, cb);
-      expect(connection.postValues).to.be.calledOnce;
-      expect(connection.postValues).to.be.calledWith("123", {}, cb);
+    it("#postMultiple calls #connection.postMultiple", function() {
+      driver.postMultiple("123", {}, cb);
+      expect(connection.postMultiple).to.be.calledOnce;
+      expect(connection.postMultiple).to.be.calledWith("123", {}, cb);
     });
 
     it("#triggers calls #connection.triggers", function() {
