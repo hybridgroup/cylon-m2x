@@ -15,7 +15,7 @@ Want to use the Go programming language to power your robots? Check out our sist
 
 Install the module with:
 
-    $ npm install cylon-m2x
+    $ npm install cylon cylon-m2x
 
 ## How to Use
 
