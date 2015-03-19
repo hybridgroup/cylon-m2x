@@ -15,12 +15,12 @@ Cylon.robot({
   work: function(my) {
     var dev = "d9c3b48d3be2e...",
         temp = 20;
-    setInterval(function() {
+    Cylon.Utils.every(2000, function() {
       my.m2x.publish(dev, "temp", temp, function(err, data) {
         console.log("Err: ", err);
         console.log("Values: ", data);
       });
       temp++;
-    }, 2000);
+    });
   }
 }).start();
