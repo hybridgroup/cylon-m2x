@@ -13,14 +13,14 @@ Cylon.robot({
   },
 
   work: function(my) {
-    var temp = 20;
+    var baseTemp = 20, temp = 0;
 
-    Cylon.Utils.every(2000, function() {
+    every(2000, function() {
+      temp = Math.floor(Math.random() * 6) + 1 + baseTemp;
       my.m2xDevice.publish("temp", temp, function(err, data) {
         console.log("Err: ", err);
         console.log("Values: ", data);
       });
-      temp++;
     });
   }
 }).start();
