@@ -8,20 +8,18 @@ Cylon.robot({
   },
 
   devices: {
-    m2x: { driver: "m2x" }
+    m2xDevice: { driver: "m2x", id: "d9c3b48d3be2e..." }
   },
 
   work: function(my) {
-    var device = "d9c3b48d3be2e...";
-
-    my.m2x.on("error", function(err) {
+    my.m2xDevice.on("error", function(err) {
       console.log("error: ", err);
     });
 
-    my.m2x.on("temp", function(data) {
+    my.m2xDevice.on("temp", function(data) {
       console.log("data: ", data);
     });
 
-    my.m2x.subscribe(device, "temp", { interval: 5000 });
+    my.m2xDevice.subscribe("temp", { interval: 5000 });
   }
 }).start();
