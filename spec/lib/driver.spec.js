@@ -59,7 +59,13 @@ describe("Cylon.Drivers.M2X", function() {
 
     beforeEach(function() {
       callback = spy();
+      stub(driver, "defineDriverEvent");
+
       driver.start(callback);
+    });
+
+    it("setups an error listener", function() {
+      expect(driver.defineDriverEvent).to.be.calledWith("error");
     });
 
     it("triggers the callback", function() {

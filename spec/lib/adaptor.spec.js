@@ -16,7 +16,7 @@ describe("Cylon.Adaptors.M2X", function() {
     });
 
     it("sets the interval for reads", function() {
-      expect(adaptor.interval).to.be.eql(1000);
+      expect(adaptor.interval).to.be.eql(2000);
     });
   });
 
@@ -302,6 +302,18 @@ describe("Cylon.Adaptors.M2X", function() {
       });
     });
 
+    describe("#publish", function() {
+      it("calls @m2xClient.devices.setStreamValue", function() {
+        adaptor.publish("123456", "temp", 15, callback);
+        expect(devices.setStreamValue).to.be.calledWith(
+          "123456",
+          "temp",
+          { value: 15 },
+          callback
+        );
+      });
+    });
+
     describe("#setStreamValue", function() {
       it("calls @m2xClient.devices.setStreamValue", function() {
         adaptor.setStreamValue("123456", "temp", { value: 15 }, callback);
@@ -318,6 +330,22 @@ describe("Cylon.Adaptors.M2X", function() {
       it("calls @m2xClient.devices.stream", function() {
         adaptor.stream("123456", "temp", callback);
         expect(devices.stream).to.be.calledWith("123456", "temp", callback);
+      });
+    });
+
+    describe("#subscribe", function() {
+      beforeEach(function() {
+        setInterval = stub();
+        setInterval.yields();
+
+        stub(adaptor, "streamValues");
+
+        adaptor.subscribe("123456", "temp", callback);
+      });
+
+      it("calls #streamValues", function() {
+        var p1 = "123456";
+        expect(adaptor.streamValues).to.be.calledWith(p1, "temp");
       });
     });
 

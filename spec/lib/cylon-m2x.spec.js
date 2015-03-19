@@ -21,7 +21,7 @@ describe("Cylon.M2x", function() {
 
   describe("#driver", function() {
     it("returns an instance of the Driver", function() {
-      expect(m2x.driver()).to.be.instanceOf(Driver);
+      expect(m2x.driver({})).to.be.instanceOf(Driver);
     });
   });
 
