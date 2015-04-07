@@ -22,10 +22,6 @@
     "jshint": "2.5.0"
   },
 
-  "peerDependencies": {
-    "cylon": ">=0.22.0 < 1"
-  },
-
   "dependencies": {
     "cylon": "~0.22.0",
     "m2x": "~2.0.2"
