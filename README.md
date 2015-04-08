@@ -88,6 +88,8 @@ Thank you!
 
 ## Release History
 
+- 0.8.0 - Compatability with Cylon 1.0.0
+
 - 0.7.0 - Add publish/subscribe functions for easy development
 
 - 0.6.0 - Compatability with Cylon 0.22.0
