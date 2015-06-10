@@ -12,7 +12,21 @@
     "url": "https://github.com/hybridgroup/cylon-m2x"
   },
 
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
+
+  "keywords": [
+    "cylon",
+    "cylonjs",
+    "cylons",
+    "robot",
+    "robots",
+    "robotics",
+    "iot",
+    "hardware",
+    "m2x",
+    "mqtt",
+    "m2m"
+  ],
 
   "devDependencies": {
     "sinon-chai": "2.5.0",
