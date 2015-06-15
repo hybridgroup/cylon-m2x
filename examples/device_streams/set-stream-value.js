@@ -18,8 +18,8 @@ Cylon.robot({
       my.m2x.setStreamValue(
         "<deviceId>", "<streamName>",
         { value: 25 },
-        function(err, locations) {
-          console.log("Err: ", err);
+        function(error, locations) {
+          console.log("Err: ", error);
           console.log("locations: ", locations);
         }
       );

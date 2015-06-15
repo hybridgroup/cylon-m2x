@@ -1,7 +1,8 @@
-// jshint expr:true
 "use strict";
 
-var M2X_Adaptor = source("adaptor");
+/* eslint no-undef: 0 */
+
+var M2X_Adaptor = lib("adaptor");
 
 describe("Cylon.Adaptors.M2X", function() {
   var adaptor;
@@ -20,7 +21,7 @@ describe("Cylon.Adaptors.M2X", function() {
     });
   });
 
-  describe("#connect", function(){
+  describe("#connect", function() {
     var callback, m2x;
 
     beforeEach(function() {
@@ -41,7 +42,7 @@ describe("Cylon.Adaptors.M2X", function() {
     });
   });
 
-  describe("#disconnect", function(){
+  describe("#disconnect", function() {
     var callback;
 
     beforeEach(function() {
@@ -55,7 +56,7 @@ describe("Cylon.Adaptors.M2X", function() {
     });
   });
 
-  describe("#list and #catalog", function(){
+  describe("#list and #catalog", function() {
     var callback;
 
     beforeEach(function() {
@@ -83,7 +84,7 @@ describe("Cylon.Adaptors.M2X", function() {
     });
   });
 
-  describe("#_list", function(){
+  describe("#_list", function() {
     var callback, m2x, list, catalog;
 
     beforeEach(function() {
@@ -145,7 +146,7 @@ describe("Cylon.Adaptors.M2X", function() {
   describe("#_defCb", function() {
     var callback, retCallback, response;
 
-    beforeEach(function(){
+    beforeEach(function() {
       callback = spy();
 
       response = {
@@ -182,7 +183,7 @@ describe("Cylon.Adaptors.M2X", function() {
     });
   });
 
-  describe("m2x", function(){
+  describe("m2x", function() {
     var callback, devices;
 
     beforeEach(function() {

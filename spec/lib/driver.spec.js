@@ -1,13 +1,12 @@
-// jshint expr:true
 "use strict";
 
-var M2X = source("driver");
+var M2X = lib("driver");
 
 describe("Cylon.Drivers.M2X", function() {
   var driver;
 
   beforeEach(function() {
-    driver  = new M2X({
+    driver = new M2X({
       connection: {}
     });
   });
@@ -48,7 +47,6 @@ describe("Cylon.Drivers.M2X", function() {
       ];
 
       for (var c in commands) {
-        //console.log("command is a function?: ", commands[c]);
         expect(driver.commands[commands[c]]).to.be.a("function");
       }
     });
@@ -92,36 +90,36 @@ describe("Cylon.Drivers.M2X", function() {
       cb = spy();
 
       connection = {
-        "catalog": spy(),
-        "list": spy(),
-        "groups": spy(),
-        "create": spy(),
-        "update": spy(),
-        "view": spy(),
-        "location": spy(),
-        "updateLocation": spy(),
-        "streams": spy(),
-        "updateStream": spy(),
-        "setStreamValue": spy(),
-        "stream": spy(),
-        "streamValues": spy(),
-        "sampleStreamValues": spy(),
-        "streamStats": spy(),
-        "postValues": spy(),
-        "deleteStreamValues": spy(),
-        "deleteStream": spy(),
-        "postMultiple": spy(),
-        "triggers": spy(),
-        "createTrigger": spy(),
-        "trigger": spy(),
-        "updateTrigger": spy(),
-        "testTrigger": spy(),
-        "deleteTrigger": spy(),
-        "log": spy(),
-        "deleteDevice": spy(),
-        "keys": spy(),
-        "createKey": spy(),
-        "updateKey": spy()
+        catalog: spy(),
+        list: spy(),
+        groups: spy(),
+        create: spy(),
+        update: spy(),
+        view: spy(),
+        location: spy(),
+        updateLocation: spy(),
+        streams: spy(),
+        updateStream: spy(),
+        setStreamValue: spy(),
+        stream: spy(),
+        streamValues: spy(),
+        sampleStreamValues: spy(),
+        streamStats: spy(),
+        postValues: spy(),
+        deleteStreamValues: spy(),
+        deleteStream: spy(),
+        postMultiple: spy(),
+        triggers: spy(),
+        createTrigger: spy(),
+        trigger: spy(),
+        updateTrigger: spy(),
+        testTrigger: spy(),
+        deleteTrigger: spy(),
+        log: spy(),
+        deleteDevice: spy(),
+        keys: spy(),
+        createKey: spy(),
+        updateKey: spy()
       };
 
       driver.connection = connection;

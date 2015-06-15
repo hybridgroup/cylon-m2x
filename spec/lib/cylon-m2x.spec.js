@@ -1,10 +1,9 @@
-// jshint expr:true
 "use strict";
 
-var m2x = source("cylon-m2x");
+var m2x = lib("cylon-m2x");
 
-var Adaptor = source("adaptor"),
-    Driver = source("driver");
+var Adaptor = lib("adaptor"),
+    Driver = lib("driver");
 
 describe("Cylon.M2x", function() {
   describe("#adaptors", function() {
