@@ -1,6 +1,6 @@
 "use strict";
 
-var m2x = lib("cylon-m2x");
+var m2x = lib("../");
 
 var Adaptor = lib("adaptor"),
     Driver = lib("driver");
