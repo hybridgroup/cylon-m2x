@@ -1,5 +1,7 @@
 ## Release History
 
+- 0.9.0 - Use Cylon 1.1.0
+
 - 0.8.0 - Compatability with Cylon 1.0.0
 
 - 0.7.0 - Add publish/subscribe functions for easy development

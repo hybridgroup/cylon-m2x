@@ -1,6 +1,6 @@
 {
   "name": "cylon-m2x",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Cylon module for M2X",
   "homepage": "http://cylonjs.com",
   "bugs": "https://github.com/hybridgroup/cylon-m2x/issues",
@@ -36,7 +36,7 @@
   },
 
   "dependencies": {
-    "cylon": "~1.0.0",
+    "cylon": "~1.1.0",
     "m2x": "~2.0.2"
   }
 }
